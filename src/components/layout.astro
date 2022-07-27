@@ -133,6 +133,8 @@ const { title, description, home = false } = Astro.props;
 <body>
   
   <header class="container">
+  <h1 class="heading">Context: {process.env.CONTEXT}</h1>
+    <h1 class="heading">Branch: {process.env.BRANCH}</h1>
     <h1 class="heading">Fruit: {process.env.FRUIT}</h1>
 
     <p class="description">{description}</p>
