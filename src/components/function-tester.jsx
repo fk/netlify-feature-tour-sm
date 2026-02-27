@@ -51,7 +51,12 @@ export default function FunctionTester({ children }) {
 
   function handleClick() {
     fetch("/.netlify/functions/hello-world")
-      .then((res) => res.text())
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error(`Function returned ${res.status}`);
+        }
+        return res.text();
+      })
       .then((result) => setOutput(result))
       .catch((err) => {
         console.log(err);

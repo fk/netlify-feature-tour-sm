@@ -1,5 +1,8 @@
 ---
 const { title, description, home = false } = Astro.props;
+const siteContext = process.env.CONTEXT || '';
+const siteBranch = process.env.BRANCH || '';
+const siteFruit = process.env.FRUIT || '';
 ---
 <!DOCTYPE html>
 <html lang="en">
@@ -30,7 +33,7 @@ const { title, description, home = false } = Astro.props;
   <meta name="theme-color" content="#ffffff" />
   <title>{title}</title>
 
-  <style global>
+  <style is:global>
     :root {
       --heading: #151a1e;
       --text: #33373b;
@@ -58,6 +61,7 @@ const { title, description, home = false } = Astro.props;
     }
 
     body {
+      background-color: #ffe0e6;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -72,7 +76,15 @@ const { title, description, home = false } = Astro.props;
       margin-bottom: 2rem;
       margin-top: 3rem;
       padding: 2rem max(5vw, 50vw - 60ch / 2);
-      width: 100vw;
+      width: 100%;
+    }
+
+    code {
+      font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+      font-size: 0.875em;
+      background: rgba(0, 0, 0, 0.06);
+      border-radius: 3px;
+      padding: 0.1em 0.3em;
     }
 
     .sr-only:not(:focus):not(:active) {
@@ -133,9 +145,9 @@ const { title, description, home = false } = Astro.props;
 <body>
   
   <header class="container">
-  <h1 class="heading">Context: {process.env.CONTEXT}</h1>
-    <h1 class="heading">Branch: {process.env.BRANCH}</h1>
-    <h1 class="heading">Fruit: {process.env.FRUIT}</h1>
+  <h1 class="heading">Context: {siteContext}</h1>
+    <h1 class="heading">Branch: {siteBranch}</h1>
+    <h1 class="heading">Fruit: {siteFruit}</h1>
 
     <p class="description">{description}</p>
 

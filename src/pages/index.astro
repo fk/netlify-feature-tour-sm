@@ -2,14 +2,62 @@
 import Layout from '../components/layout.astro';
 ---
 
+<style>
+.features {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  gap: 1rem;
+}
+
+.features li {
+  background: var(--white);
+  border: 1px solid var(--lightBorder);
+  border-radius: 0.5rem;
+  padding: 1rem 1.5rem;
+}
+
+.features a {
+  color: var(--heading);
+  font-size: 1.25rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.features a:hover {
+  text-decoration: underline;
+}
+
+.features p {
+  color: var(--text-muted);
+  margin: 0.25rem 0 0;
+}
+</style>
 
 <Layout
   title="Netlify Feature Tour"
-  description=""
+  description="Welcome to the Netlify Feature Tour! Click the links below to explore key Netlify features."
   home
 >
-    
-
-
-
+  <main>
+    <h2>Explore Netlify Features</h2>
+    <ul class="features">
+      <li>
+        <a href="/functions">Netlify Functions</a>
+        <p>Create and deploy serverless functions.</p>
+      </li>
+      <li>
+        <a href="/deploy-previews">Deploy Previews</a>
+        <p>See and share changes before going live.</p>
+      </li>
+      <li>
+        <a href="/instant-rollbacks">Instant Rollbacks</a>
+        <p>Roll back to a previous deploy with one click.</p>
+      </li>
+      <li>
+        <a href="/netlify-forms">Netlify Forms</a>
+        <p>Turn any HTML form into a functional form.</p>
+      </li>
+    </ul>
+  </main>
 </Layout>
