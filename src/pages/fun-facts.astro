@@ -76,14 +76,19 @@ import Layout from '../components/layout.astro';
   const btn = document.getElementById('fact-btn');
   const text = document.getElementById('fact-text');
 
-  btn.addEventListener('click', async () => {
-    text.textContent = 'Loading...';
-    try {
-      const res = await fetch('/.netlify/functions/fun-fact');
-      const data = await res.json();
-      text.textContent = data.fact;
-    } catch {
-      text.textContent = 'Could not load a fact. Please try again!';
-    }
-  });
+  if (btn && text) {
+    btn.addEventListener('click', async () => {
+      text.textContent = 'Loading...';
+      try {
+        const res = await fetch('/.netlify/functions/fun-fact');
+        if (!res.ok) {
+          throw new Error(`Function returned ${res.status}`);
+        }
+        const data = await res.json();
+        text.textContent = data.fact;
+      } catch {
+        text.textContent = 'Could not load a fact. Please try again!';
+      }
+    });
+  }
 </script>
