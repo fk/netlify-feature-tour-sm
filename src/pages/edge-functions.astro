@@ -1,0 +1,65 @@
+---
+import Layout from '../components/layout.astro';
+---
+
+<style>
+.wrapper {
+  text-align: center;
+}
+
+.demo-box {
+  background: var(--white);
+  border: 1px solid var(--lightBorder);
+  border-radius: 0.5rem;
+  margin: 1.5rem auto;
+  max-width: 40ch;
+  padding: 1.5rem;
+}
+
+.demo-box p {
+  margin: 0;
+}
+</style>
+
+<Layout
+  title="Edge Functions"
+  description="Run server-side code at the network edge for ultra-fast, location-aware responses — no cold starts."
+>
+  <main>
+    <div class="wrapper">
+      <h2>Edge Functions</h2>
+      <p>
+        Netlify Edge Functions run on <strong>Deno</strong> at the network edge,
+        close to your users. They're perfect for personalizing content,
+        transforming responses, A/B testing, and more — all with
+        <strong>zero cold starts</strong>.
+      </p>
+
+      <div class="demo-box">
+        <p>
+          Visit <code>/edge-hello</code> to see the sample edge function in
+          action!
+        </p>
+      </div>
+
+      <ol style="text-align: left;">
+        <li>
+          Edge Functions live in <code>netlify/edge-functions/</code>.
+        </li>
+        <li>
+          They use the <strong>Deno</strong> runtime and Web Standard APIs.
+        </li>
+        <li>
+          Configure routes in <code>netlify.toml</code> under
+          <code>[[edge_functions]]</code>.
+        </li>
+      </ol>
+
+      <p>
+        <a href="https://docs.netlify.com/edge-functions/overview/">
+          Learn about Edge Functions in the Netlify docs.
+        </a>
+      </p>
+    </div>
+  </main>
+</Layout>

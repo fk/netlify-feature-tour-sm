@@ -1,0 +1,89 @@
+---
+import Layout from '../components/layout.astro';
+---
+
+<style>
+.wrapper {
+  text-align: center;
+}
+
+.fact-box {
+  background: var(--white);
+  border: 1px solid var(--lightBorder);
+  border-radius: 0.5rem;
+  margin: 1.5rem auto;
+  max-width: 50ch;
+  min-height: 6rem;
+  padding: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.fact-box p {
+  font-size: 1.125rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.button {
+  background: var(--primary);
+  border: 0;
+  border-radius: 4px;
+  color: var(--button);
+  cursor: pointer;
+  display: inline-block;
+  font-size: 1rem;
+  font-weight: 600;
+  margin-top: 1rem;
+  padding: 0.5rem 1.5rem;
+  text-decoration: none;
+}
+</style>
+
+<Layout
+  title="Fun Facts"
+  description="Get a random fun fact about web development, powered by a Netlify Function."
+>
+  <main>
+    <div class="wrapper">
+      <h2>Web Dev Fun Facts</h2>
+      <p>
+        Click the button to fetch a random fun fact from a
+        <strong>Netlify Function</strong>.
+      </p>
+
+      <div class="fact-box">
+        <p id="fact-text">Click the button below to get a fun fact!</p>
+      </div>
+
+      <button class="button" id="fact-btn">Get a Fun Fact</button>
+
+      <p style="margin-top: 2rem;">
+        This page calls the <code>fun-fact</code> serverless function at
+        <code>/.netlify/functions/fun-fact</code>.
+      </p>
+      <p>
+        <a href="https://docs.netlify.com/functions/configure-and-deploy/">
+          Learn about Netlify Functions in the docs.
+        </a>
+      </p>
+    </div>
+  </main>
+</Layout>
+
+<script>
+  const btn = document.getElementById('fact-btn');
+  const text = document.getElementById('fact-text');
+
+  btn.addEventListener('click', async () => {
+    text.textContent = 'Loading...';
+    try {
+      const res = await fetch('/.netlify/functions/fun-fact');
+      const data = await res.json();
+      text.textContent = data.fact;
+    } catch {
+      text.textContent = 'Could not load a fact. Please try again!';
+    }
+  });
+</script>
