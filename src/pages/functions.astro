@@ -1,5 +1,5 @@
 ---
-import { Code } from 'astro/components';
+import { Code } from 'astro:components';
 import Layout from '../components/layout.astro';
 import FunctionTester from '../components/function-tester.jsx';
 
@@ -28,11 +28,11 @@ exports.handler = async () => {
   padding: 1rem;
 }
 
-:global(.error) p {
+:global(.error p) {
   margin: 0;
 }
 
-:global(.error) pre {
+:global(.error pre) {
   background: #fdfdfd;
   color: hsl(0 25% 40%);
   overflow-x: scroll;
