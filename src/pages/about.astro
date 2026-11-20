@@ -1,0 +1,50 @@
+---
+import Layout from '../components/layout.astro';
+---
+
+<style>
+  h2 {
+    text-align: center;
+  }
+
+  .bio {
+    text-align: center;
+  }
+
+  .social-links {
+    list-style: none;
+    margin: 2rem 0 0;
+    padding: 0;
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .cv-link {
+    display: block;
+    margin-top: 2rem;
+    text-align: center;
+  }
+</style>
+
+<Layout
+  title="About"
+  description="A short bio, social links, and CV for this placeholder person."
+>
+  <main>
+    <h2>About</h2>
+    <p class="bio">
+      This is a placeholder bio. Replace it with a short introduction: who you
+      are, what you do, and what you're interested in.
+    </p>
+    <ul class="social-links">
+      <li><a href="https://github.com/your-handle">GitHub</a></li>
+      <li><a href="https://twitter.com/your-handle">Twitter</a></li>
+      <li><a href="https://linkedin.com/in/your-handle">LinkedIn</a></li>
+    </ul>
+    <p class="cv-link">
+      <a href="#">Download CV (PDF)</a>
+    </p>
+  </main>
+</Layout>
